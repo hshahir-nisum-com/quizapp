@@ -1,0 +1,32 @@
+.testToBeGiven {
+  /* width: 12vw; */
+  padding: 10vw;
+}
+
+.js-test {
+  display: block;
+  text-decoration: none;
+  border: 3px solid black;
+  width: 50vw;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+}
+.text-test {
+   display: none;
+   text-decoration: none;
+   border: 3px solid black;
+   width: 50vw;
+   padding: 10px;
+   margin-top: 15px;
+   border-radius: 0;
+ }
+ 
+.test-list-heading{
+   text-transform: uppercase;
+   margin-bottom: 10px;
+}
+@media screen and (min-width: 600px) {
+  .js-test {
+    font-size: 30px;
+  }
+}

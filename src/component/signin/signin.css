@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+.form {
+  margin: 10vw auto;
+  background: rgba(41, 89, 109, 0.8);
+  max-width: 560px;
+  padding: 45px;
+  text-align: center;
+}
+.form input {
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin-bottom: 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.form .btn {
+  font-family: Arial, sans-serif;
+  outline: 1;
+  background: #070707;
+  width: 100%;
+  padding: 15px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: rgb(20, 20, 20);
+}
+.msg {
+  margin: 15px 0 0;
+  color: aliceblue;
+  font-size: 12px;
+}
+.msg span {
+  color: #030303;
+  text-decoration: none;
+}
