@@ -3,6 +3,7 @@ import "./signin.css";
 import data from "./credential.json";
 import { useHistory } from "react-router-dom";
 
+
 function Signin() {
   const [name, setName] = useState("");
   const [pass, setpass] = useState("");
@@ -21,14 +22,14 @@ function Signin() {
       : localStorage.setItem("isUserLoging", false);
 
     console.log(localStorage.getItem("isUserLoging"));
-    if (localStorage.getItem("isUserLoging")=='true') {
+    if (localStorage.getItem("isUserLoging")==='true') {
       console.log("in if cond")
       history.push("/testlist");
     } else {
       console.log("in else cond")
-      // alert("please login first");
     }
   };
+  
   return (
     <div className="form registered ">
       <input
