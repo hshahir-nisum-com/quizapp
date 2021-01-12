@@ -1,24 +1,25 @@
 [
   {
-    "ques1": "Inside which HTML element do we put the JavaScript?",
-    "opt1": "<script>",
-    "opt2": "<js>",
-    "opt3": "<scripting>",
-    "opt4": "<javascript>",
-    "rightAns": "opt1"
+    "ques": "Inside which HTML element do we put the JavaScript?",
+    "option": ["<script>", "<js>", "<scripting>", "<javascript>"],
+    "rightAns" : "<script>"
   },
   {
-    "ques1": " What is the correct JavaScript syntax to change the content of the HTML element below?",
-    "opt1": "document.getElementByTagsName('p').innerHTML = 'Hello World!'",
-    "opt2": "document.getElement('p').innerHTML = 'Hello World!';",
-    "opt3": "document.getElementById('demo').innerHTML = 'Hello World!';",
-    "rightAns": "opt3"
+    "ques": " What is the correct JavaScript syntax to change the content of the HTML element below?",
+    "option": [
+      "document.getElementByTagsName('p').innerHTML = 'Hello World!'",
+      "document.getElement('p').innerHTML = 'Hello World!';",
+      "document.getElementById('demo').innerHTML = 'Hello World!';"
+    ],
+    "rightAns" : "document.getElementById('demo').innerHTML = 'Hello World!';"
   },
   {
-    "ques1": " Where is the correct place to insert a JavaScript?",
-    "opt1": "document.getElementByTagsName('p').innerHTML = '<head>'",
-    "opt2": "document.getElement('p').innerHTML = '<body>';",
-    "opt3": "document.getElementById('demo').innerHTML = 'both';",
-    "rightAns": "opt3"
+    "ques": " Where is the correct place to insert a JavaScript?",
+    "option": [
+      "<head>",
+      "<body>",
+      "both"
+    ],
+    "rightAns": "<body>"
   }
 ]

@@ -1,0 +1,38 @@
+.question-box{
+    width: max-content;
+    margin: 150px 100px;
+    display: flex;
+    flex-direction: row;
+
+}
+.question-container{
+    border: 2px solid black;
+}
+
+.question{
+    font-size: 30px;
+}
+
+.options-list{
+    display: block;
+    margin: 20px 50px;
+}
+
+.timer-display{
+    font-size: 30px;
+    border: 2px solid black;
+}
+
+
+@media screen and (max-width: 480px) {
+    .question-box{
+        width: max-content;
+        margin: 50px 100px;
+        display: flex;
+        flex-direction: row;
+    
+    }
+    .question{
+        font-size: 10px;
+    }
+  }

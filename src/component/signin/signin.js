@@ -8,6 +8,7 @@ function Signin() {
   const [name, setName] = useState("");
   const [pass, setpass] = useState("");
   const history = useHistory();
+  
 
   const check = (nameInput, passwordInput) => {
     let user = data.find(({ name }) =>
@@ -53,6 +54,7 @@ function Signin() {
         type="submit"
         value="LOGIN"
         className="btn"
+        data-testid="btn"
         onClick={() => {
           check(name, pass);
         }}

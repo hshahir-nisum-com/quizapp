@@ -1,8 +1,17 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Signin from "./signin";
-import { check, apiCall,productCat} from "./utils";
+import { check, productCat } from "./utils";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  createEvent,
+} from "@testing-library/react";
 
+afterEach(cleanup);
+/*
 
 it("renders correctly", () => {
   const tree = renderer.create(<Signin></Signin>).toJSON();
@@ -57,23 +66,43 @@ it("unit test of check function", () => {
   expect(temp).toBeUndefined();
 });
 
-// it("test resolve of promise", () => {
-//   return apiCall()
-//     .then((res) => res.json())
-//     .then((json) =>{ expect(json)})
-//     .catch(err => console.log("error "));
-// });
 
 
 
-// __tests__/user-test.js
-jest.mock(apiCall);
+const cat = {
+  category: "men clothing"
+};
 
-
-// The assertion for a promise must be returned.
-it('works with promises', () => {
-  expect.assertions(1);
-  return productCat(4).then(data => expect(data).toEqual('men'));
+jest.mock("./api", () => {
+  return  {
+    apiCall: () => cat
+  }
 });
 
+test("should fetch data", () => {
+  return productCat().then((json) =>  expect(json).toEqual(cat));
+});
 
+*/
+//  expect(data).toEqual(users)
+
+const { getByTestId } = render(<Signin />);
+const Button = getByTestId("btn");
+
+// test("click event test", () => {
+//   function clickedEvent() {
+//     console.log("event is clicked");
+//   }
+//   fireEvent.click(Button, clickedEvent());
+// });
+
+// test("Button Enable Test", () => {
+//   expect(Button).toBeEnabled();
+// });
+
+test("calls onClick prop when clicked", () => {
+  const handleClick = jest.fn();
+  Button.onclick = handleClick;
+  fireEvent.click(Button);
+  expect(handleClick).toHaveBeenCalledTimes(1);
+});

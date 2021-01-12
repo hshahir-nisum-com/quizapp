@@ -3,14 +3,20 @@ import "./testList.css";
 import data from "./subject.json";
 import { useHistory } from "react-router-dom";
 
-
 function TestList() {
-  const [key, setKey] = useState("");
   const history = useHistory();
 
-  const checkkey = ()=>{
-    key== data[0].key ? history.push('/testscript') : alert('wrong key')
+  if (localStorage.getItem("isUserLoging") !== "true") {
+    console.log("in if cond");
+    history.push("/");
+  } else {
+    console.log("in else cond");
   }
+  const [key, setKey] = useState("");
+
+  const checkkey = () => {
+    key == data[0].key ? history.push("/questions") : alert("wrong key");
+  };
 
   return (
     <div className="testToBeGiven">
@@ -28,14 +34,12 @@ function TestList() {
         id="text"
         className="text-test"
         placeholder="Please Enter test key"
-        onChange ={(e)=>{
-          setKey(e.target.value)
+        onChange={(e) => {
+          setKey(e.target.value);
         }}
-        onBlur ={
-          ()=>{
-            checkkey()
-          }
-        }
+        onBlur={() => {
+          checkkey();
+        }}
       />
     </div>
   );
