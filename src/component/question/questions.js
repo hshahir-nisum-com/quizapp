@@ -11,28 +11,26 @@ function Questions() {
   const [index, setIndex] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
+  checkisLogin(history);
+
+  setTimeout(() => {
+    if (index < ques.length - 1) {
+      setIndex(index + 1);
+    }
+  }, 5000);
 
   useEffect(() => {
     dispatch(actions.ques({ ques }));
-    console.log("In Use Effect :",index)
-    setTimeout(() => {
-      if (index < ques.length ) {
-        setIndex(index + 1);
-      }
-    }, 10000);
   }, []);
 
   const { questions } = useSelector((state) => ({
     questions: state.quesSlicer.ques,
   }));
 
-  console.log("questions :", questions);
-  checkisLogin(history);
-
   return (
     <div className="question-box">
       {questions.length && (
-        <QuesPresentational index={index} ques={questions} />
+        <QuesPresentational index={index} ques={questions} setIndexs = {setIndex}/>
       )}
     </div>
   );

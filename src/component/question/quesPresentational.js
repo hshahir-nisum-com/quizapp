@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import TimerDef from "./timerDef";
-
-function quesPresentational({ index, ques }) {
-
-    console.log("index :",index)
+import "./quesPresentational.css";
+function QuesPresentational({ index, ques , setIndexs }) {
+  
+  const [Selected, setSelected] = useState([]);
+  const [radio , setRadio ]= useState("")
+console.log("index :", Selected);
   return (
     <div>
-      <div className="question-container">
+     { index < 3 ? <div className="question-container">
         <h3 className="question">Question : {ques[index].ques}</h3>
         <div className="options">
           {ques[index].option.map((optTemp, ind) => {
             return (
               <span className="options-list" key={ind}>
                 {" "}
-                <input type="radio" value={optTemp} name="opt1" />
+                <input
+                  name="radio"
+                  type="radio"
+                  value={optTemp}
+                  onChange={(e) => setRadio(e.target.value)}
+                />
                 <span className="opt-ques"> {optTemp} </span>
               </span>
             );
           })}
         </div>
-      </div>
+        <input type="Button" name="Button" value="NEXT" className="button" onClick={()=>{
+          setIndexs(index+1)
+          setSelected([...Selected, radio])
+          {<TimerDef/>}
+        }} />
+      </div>: console.log("test over")}
       <div className="timer-display">
         <TimerDef />{" "}
       </div>
@@ -27,4 +39,4 @@ function quesPresentational({ index, ques }) {
   );
 }
 
-export default quesPresentational;
+export default QuesPresentational;
