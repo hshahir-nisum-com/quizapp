@@ -1,56 +1,39 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ques from "./quesAns.json";
 import "./questions.css";
 import { useHistory } from "react-router-dom";
+import checkisLogin from "../utilsFunction/checkLogin";
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../../Redux/slicers/quesSlicer";
+import QuesPresentational from "./quesPresentational";
 
 function Questions() {
   const [index, setIndex] = useState(0);
-  const [seconds, setSeconds] = React.useState(10);
   const history = useHistory();
-  if (localStorage.getItem("isUserLoging") !== "true") {
-    console.log("in if cond");
-    history.push("/");
-  } else {
-    console.log("in else cond");
-  }
-  setTimeout(() => {
-    if (index < ques.length - 1) {
-      setIndex(index + 1);
-    }
-  }, 10000);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (seconds >= 0) {
-      setTimeout(() => setSeconds(seconds - 1), 1000);
-    } else {
-      setSeconds(10)
-    }
-  });
+    dispatch(actions.ques({ ques }));
+    console.log("In Use Effect :",index)
+    setTimeout(() => {
+      if (index < ques.length ) {
+        setIndex(index + 1);
+      }
+    }, 10000);
+  }, []);
+
+  const { questions } = useSelector((state) => ({
+    questions: state.quesSlicer.ques,
+  }));
+
+  console.log("questions :", questions);
+  checkisLogin(history);
 
   return (
     <div className="question-box">
-      <div className="question-container">
-      {
-        <span>
-          <h3 className="question">Question : {ques[index].ques}</h3>
-          <div>
-            {ques[index].option.map((optTemp, ind) => {
-              return (
-                <span className="options-list" key={ind}>
-                  {" "}
-                  <input type="radio" value="Male" name="opt1" /> {optTemp}{" "}
-                  <br />
-                </span>
-              );
-            })}
-          </div>
-        </span>
-      }
-      </div>
-      <div className="timer-display">
-        Timer : {seconds}
-      </div>
+      {questions.length && (
+        <QuesPresentational index={index} ques={questions} />
+      )}
     </div>
   );
 }

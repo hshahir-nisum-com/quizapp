@@ -1,36 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./signin.css";
 import data from "./credential.json";
 import { useHistory } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../../Redux/slicers/loginSlicer";
+import check from "./utils";
 
 function Signin() {
   const [name, setName] = useState("");
   const [pass, setpass] = useState("");
   const history = useHistory();
-  
+  const dispatch = useDispatch();
+  let userName = useSelector((state) => state.signinReducer.userName);
+  let userPassword = useSelector((state) => state.signinReducer.userPassword);
 
-  const check = (nameInput, passwordInput) => {
-    let user = data.find(({ name }) =>
-      name.toLowerCase() === nameInput.toLowerCase() ? true : false
-    );
-    let pass = data.find(({ password }) =>
-      password.toLowerCase() === passwordInput.toLowerCase() ? true : false
-    );
+  useEffect(() => {
+    data.map(({ name, password }) => {
+      dispatch(actions.uName(name.toLocaleLowerCase()));
+      dispatch(actions.uPassword(password.toLocaleLowerCase()));
+      return 0;
+    });
+  }, [dispatch]);
 
-    user && pass
-      ? localStorage.setItem("isUserLoging", true)
-      : localStorage.setItem("isUserLoging", false);
-
-    console.log(localStorage.getItem("isUserLoging"));
-    if (localStorage.getItem("isUserLoging")==='true') {
-      console.log("in if cond")
-      history.push("/testlist");
-    } else {
-      console.log("in else cond")
-    }
-  };
-  
   return (
     <div className="form registered ">
       <input
@@ -56,11 +47,11 @@ function Signin() {
         className="btn"
         data-testid="btn"
         onClick={() => {
-          check(name, pass);
+          check(name, pass, history, userName, userPassword);
         }}
       />
       <p className="msg">
-        Not Registered? <a href="#">Register</a>
+        Not Registered? <a href="/#">Register</a>
       </p>
     </div>
   );

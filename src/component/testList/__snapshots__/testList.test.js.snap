@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders snapshot 1`] = `
+Array [
+  " ",
+  <div
+    className="testToBeGiven"
+  >
+    <h1
+      className="test-list-heading"
+    >
+      Given test list
+    </h1>
+    <div
+      className="js-test"
+      onClick={[Function]}
+    />
+    <input
+      className="text-test"
+      data-testid="text-box"
+      id="text"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Please Enter test key"
+      type="text"
+    />
+  </div>,
+  " ",
+]
+`;

@@ -1,17 +1,25 @@
-import data from "./credential.json";
-import  { apiCall }  from "./api";
+function check(
+  nameInput,
+  passwordInput,
+  history,
+  storeUserName,
+  storePassword
+) {
+  let user = storeUserName.find((name) =>
+    name === nameInput.toLowerCase() ? true : console.log(false)
+  );
 
-const dataName = data[0].name;
-const dataPass = data[0].password;
+  let pass = storePassword.find((password) =>
+    password === passwordInput.toLowerCase() ? true : false
+  );
 
-export function check(name, pass) {
-  if (name === dataName && pass === dataPass) {
-    return true;
+  user && pass
+    ? localStorage.setItem("isUserLoging", true)
+    : localStorage.setItem("isUserLoging", false);
+
+  if (localStorage.getItem("isUserLoging") === "true") {
+    history.push("/testlist");
   }
 }
 
-export async function productCat(productInd) {
-  const temp = await apiCall(productInd);
-  return temp;
-}
-
+export default check;

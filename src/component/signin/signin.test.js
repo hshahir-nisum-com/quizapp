@@ -1,108 +1,95 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import { Provider } from "react-redux";
+import store from "../../Redux/store/store";
 import Signin from "./signin";
-import { check, productCat } from "./utils";
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  createEvent,
-} from "@testing-library/react";
+import check from "./utils";
+import { cleanup, fireEvent, render } from "@testing-library/react";
 
 afterEach(cleanup);
-/*
-
+const tree = renderer
+  .create(
+    <Provider store={store}>
+      {" "}
+      <Signin></Signin>{" "}
+    </Provider>
+  )
+  .toJSON();
 it("renders correctly", () => {
-  const tree = renderer.create(<Signin></Signin>).toJSON();
   expect(tree).toMatchInlineSnapshot(`
-    <div
-      className="form registered "
-    >
-      <input
-        name="userName"
-        onChange={[Function]}
-        placeholder="user name"
-        type="text"
-      />
-      <input
-        id="name"
-        name="password"
-        onChange={[Function]}
-        placeholder="password"
-        type="password"
-      />
-      <input
-        className="btn"
-        onClick={[Function]}
-        type="submit"
-        value="LOGIN"
-      />
-      <p
-        className="msg"
+    Array [
+      " ",
+      <div
+        className="form registered "
       >
-        Not Registered? 
-        <a
-          href="#"
+        <input
+          name="userName"
+          onChange={[Function]}
+          placeholder="user name"
+          type="text"
+        />
+        <input
+          id="name"
+          name="password"
+          onChange={[Function]}
+          placeholder="password"
+          type="password"
+        />
+        <input
+          className="btn"
+          data-testid="btn"
+          onClick={[Function]}
+          type="submit"
+          value="LOGIN"
+        />
+        <p
+          className="msg"
         >
-          Register
-        </a>
-      </p>
-    </div>
+          Not Registered? 
+          <a
+            href="/#"
+          >
+            Register
+          </a>
+        </p>
+      </div>,
+      " ",
+    ]
   `);
 });
 
 it("renders snapshot", () => {
-  const tree = renderer.create(<Signin></Signin>).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
-it("unit test of check function", () => {
-  let temp = check("Ali", "123");
-  expect(temp).toBeTruthy();
-  temp = check("Ali", "1234");
-  expect(temp).toBeUndefined();
-  temp = check();
-  expect(temp).toBeUndefined();
-});
-
-
-
-
-const cat = {
-  category: "men clothing"
-};
-
-jest.mock("./api", () => {
-  return  {
-    apiCall: () => cat
-  }
-});
-
-test("should fetch data", () => {
-  return productCat().then((json) =>  expect(json).toEqual(cat));
-});
-
-*/
-//  expect(data).toEqual(users)
-
-const { getByTestId } = render(<Signin />);
+const { getByTestId } = render(
+  <Provider store={store}>
+    <Signin />
+  </Provider>
+);
 const Button = getByTestId("btn");
 
-// test("click event test", () => {
-//   function clickedEvent() {
-//     console.log("event is clicked");
-//   }
-//   fireEvent.click(Button, clickedEvent());
-// });
+test("click event test", () => {
+  function clickedEvent() {
+    console.log("event is clicked");
+  }
+  fireEvent.click(Button, clickedEvent());
+});
 
-// test("Button Enable Test", () => {
-//   expect(Button).toBeEnabled();
-// });
+test("Button Enable Test", () => {
+  expect(Button).toBeEnabled();
+});
 
 test("calls onClick prop when clicked", () => {
   const handleClick = jest.fn();
   Button.onclick = handleClick;
   fireEvent.click(Button);
   expect(handleClick).toHaveBeenCalledTimes(1);
+});
+
+test("mock default function when button is clicked", () => {
+  const mockFunc = jest.fn();
+  check.prototype = mockFunc;
+  mockFunc.mockReturnValue(console.log("this response from mock"));
+  fireEvent.click(Button);
 });
