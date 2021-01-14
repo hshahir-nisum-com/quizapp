@@ -11,11 +11,9 @@
 .question-container {
   flex: 1;
 }
-
 .question {
   font-size: 30px;
 }
-
 .options-list {
   display: block;
   margin: 20px 50px;

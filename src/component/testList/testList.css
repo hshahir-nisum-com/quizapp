@@ -10,6 +10,7 @@
   width: 50vw;
   padding: 10px;
   box-shadow: 5px 10px #888888;
+  margin-bottom: 20px;
 }
 .text-test {
    display: none;

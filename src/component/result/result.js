@@ -25,7 +25,6 @@ function Result(props) {
   console.log("result :", percent);
   return (
     <div className="wrapper">
-      <h1>Time is up</h1>
       <h1>You Got {percent.toFixed(2)}%</h1>
     </div>
   );

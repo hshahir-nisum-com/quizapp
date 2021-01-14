@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React  from "react";
 import "./quesPresentational.css";
 import TimerDef from "./timerDef";
-import { useHistory } from "react-router-dom";
 
 function QuesPresentational({ ques, index, onSelect, onNext, sec, selected }) {
   return (

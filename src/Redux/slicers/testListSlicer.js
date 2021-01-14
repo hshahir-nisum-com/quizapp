@@ -3,16 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const testListSlicer = createSlice({
   name: "Test List",
   initialState: {
-    testList: [],
-    keys: [],
+    testList: []
   },
   reducers: {
     tests(state, action) {
-      state.testList.push(action.payload);
-    },
-    keys(state, action) {
-      state.keys.push(action.payload);
-    },
+      console.log("PayLoad :",action.payload)
+      state.testList = [...action.payload];
+    }
   },
 });
 
