@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import TimerDef from "./timerDef";
+import React, { useState, useEffect } from "react";
 import "./quesPresentational.css";
-function QuesPresentational({ index, ques, setIndices, setSec }) {
-  const [Selected, setSelected] = useState([]);
-  const [radio, setRadio] = useState("");
+import TimerDef from "./timerDef";
+import { useHistory } from "react-router-dom";
 
-  console.log("index :", Selected);
+function QuesPresentational({ ques, index, onSelect, onNext, sec, selected }) {
   return (
     <div>
-      {index < 3 ? (
-        <div className="question-container">
-          <h3 className="question">Question : {ques[index].ques}</h3>
+       <div className="question-container">
+         {console.log("Index :",index)}
+          <h3 className="question">Question {index + 1} : {ques[index].ques}</h3>
           <div className="options">
             {ques[index].option.map((optTemp, ind) => {
               return (
@@ -19,8 +17,10 @@ function QuesPresentational({ index, ques, setIndices, setSec }) {
                   <input
                     name="radio"
                     type="radio"
+                    className="radioId"
                     value={optTemp}
-                    onChange={(e) => setRadio(e.target.value)}
+                    checked={selected[index] === optTemp}
+                    onChange={(e) => onSelect(e.target.value, index)}
                   />
                   <span className="opt-ques"> {optTemp} </span>
                 </span>
@@ -30,19 +30,12 @@ function QuesPresentational({ index, ques, setIndices, setSec }) {
           <input
             type="Button"
             name="Button"
-            value="NEXT"
             className="button"
-            onClick={() => {
-              setIndices(index + 1);
-              setSelected([...Selected, radio]);
-              setSec(0)
-            }}
+            value="NEXT"
+            onClick={() => onNext(index + 1)}
           />
+          <TimerDef indices={index} sec={sec} />
         </div>
-      ) : (
-        console.log("test over")
-      )}
-      <div className="timer-display"></div>
     </div>
   );
 }
