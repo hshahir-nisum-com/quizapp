@@ -5,19 +5,13 @@ import { useHistory } from "react-router-dom";
 import checkisLogin from "../utilsFunction/checkLogin";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../Redux/slicers/quesSlicer";
-import QuesPresentational from "./quesPresentational";
+
+import TimerDef from "./timerDef";
 
 function Questions() {
-  const [index, setIndex] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
   checkisLogin(history);
-
-  setTimeout(() => {
-    if (index < ques.length - 1) {
-      setIndex(index + 1);
-    }
-  }, 5000);
 
   useEffect(() => {
     dispatch(actions.ques({ ques }));
@@ -29,9 +23,7 @@ function Questions() {
 
   return (
     <div className="question-box">
-      {questions.length && (
-        <QuesPresentational index={index} ques={questions} setIndexs = {setIndex}/>
-      )}
+      <TimerDef ques={questions} />{" "}
     </div>
   );
 }
