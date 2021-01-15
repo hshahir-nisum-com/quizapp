@@ -7,8 +7,8 @@ const quesSlicer = createSlice({
   },
   reducers: {
     ques(state, action) {
-      let { ques } = action.payload;
-      state.ques = ques;
+      console.log("ques :", action.payload)
+      state.ques = action.payload;
     },
   },
 });

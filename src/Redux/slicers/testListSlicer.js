@@ -7,8 +7,8 @@ const testListSlicer = createSlice({
   },
   reducers: {
     tests(state, action) {
-      console.log("PayLoad :",action.payload)
-      state.testList = [...action.payload];
+      console.log("PayLoad :",action.payload.data)
+      state.testList = [...action.payload.data];
     }
   },
 });

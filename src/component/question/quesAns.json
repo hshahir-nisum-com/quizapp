@@ -1,25 +1,46 @@
-[
-  {
-    "ques": "Inside which HTML element do we put the JavaScript?",
-    "option": ["<script>", "<js>", "<scripting>", "<javascript>"],
-    "rightAns" : "<script>"
-  },
-  {
-    "ques": " What is the correct JavaScript syntax to change the content of the HTML element below?",
-    "option": [
-      "document.getElementByTagsName('p').innerHTML = 'Hello World!'",
-      "document.getElement('p').innerHTML = 'Hello World!';",
-      "document.getElementById('demo').innerHTML = 'Hello World!';"
-    ],
-    "rightAns" : "document.getElementById('demo').innerHTML = 'Hello World!';"
-  },
-  {
-    "ques": " Where is the correct place to insert a JavaScript?",
-    "option": [
-      "<head>",
-      "<body>",
-      "both"
-    ],
-    "rightAns": "<body>"
-  }
-]
+{
+  "/JStest": [
+    {
+      "ques": "Inside which HTML element do we put the JavaScript?",
+      "option": ["<script>", "<js>", "<scripting>", "<javascript>"],
+      "rightAns": "<script>"
+    },
+    {
+      "ques": " What is the correct JavaScript syntax to change the content of the HTML element below?",
+      "option": [
+        "document.getElementByTagsName('p').innerHTML = 'Hello World!'",
+        "document.getElement('p').innerHTML = 'Hello World!';",
+        "document.getElementById('demo').innerHTML = 'Hello World!';"
+      ],
+      "rightAns": "document.getElementById('demo').innerHTML = 'Hello World!';"
+    },
+    {
+      "ques": " Where is the correct place to insert a JavaScript?",
+      "option": ["<head>", "<body>", "both"],
+      "rightAns": "<body>"
+    }
+  ],
+
+  "/reacttest": [
+    {
+      "ques": "what is React ?",
+      "option": ["Language", "framework", "library"],
+      "rightAns": "library"
+    },
+    {
+      "ques": " React is mainly used for building ?",
+      "option": [
+        "Database",
+        "Connectivity",
+        "User interface",
+        "Design Platform"
+      ],
+      "rightAns": "User interface"
+    },
+    {
+      "ques": " What is used to pass data to a component from outside?",
+      "option": ["setState", "PropTypes", "props"],
+      "rightAns": "props"
+    }
+  ]
+}

@@ -1,1 +1,4 @@
-[ "JavaScript","React"]
+[
+  { "test": "JavaScript", "route": "/JStest" },
+  { "test": "React", "route": "/reacttest" }
+]

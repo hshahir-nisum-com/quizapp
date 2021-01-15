@@ -17,13 +17,14 @@ function Questions() {
   checkisLogin(history);
 
   useEffect(() => {
-    dispatch(actions.ques({ ques }));
+    dispatch(actions.ques(ques[history.location.pathname]));
   }, []);
 
   const { questions } = useSelector((state) => ({
     questions: state.quesSlicer.ques,
   }));
 
+  console.log("questions: ", questions);
   useEffect(() => {
     if (!questions.length) return;
     clearTimeout(timer.current);
@@ -56,7 +57,6 @@ function Questions() {
       });
     }
   };
-  console.log("questions: ", questions);
 
   return (
     <div className="question-box">

@@ -10,26 +10,27 @@ function TestList() {
   const history = useHistory();
   const dispatch = useDispatch();
   let testList = useSelector((state) => state.testListSlicer.testList);
+  console.log("test List :",testList)
   checkisLogin(history);
 
   useEffect(() => {
-    dispatch(actions.tests(data));
+    dispatch(actions.tests({data}));
   }, []);
 
   return (
     <div className="testToBeGiven">
       <h1 className="test-list-heading">Given test list</h1>
 
-      {testList.map((list, ind) => {
+      {testList.map(({test,route}, ind) => {
         return (
           <div
             className="js-test"
             key={ind}
             onClick={() => {
-              history.push("/questions");
+              history.push(route);
             }}
           >
-            {list}
+            {test}
           </div>
         );
       })}

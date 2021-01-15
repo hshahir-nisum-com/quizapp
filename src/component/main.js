@@ -9,7 +9,8 @@ function main() {
             <Switch>
                 <Route exact path="/" component={Signin} />
                 <Route exact path="/testlist" component={TestList} />
-                <Route exact path="/questions" component={Question} />
+                <Route exact path="/JStest" component={Question} />
+                <Route exact path="/reacttest" component={Question} />
                 <Route exact path="/result" component={Result} />
             </Switch>
             
