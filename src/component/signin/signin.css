@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  background: rgb(249,219,61);
   font-family: Arial, sans-serif;
 }
 .form {
@@ -38,8 +39,10 @@
   margin: 15px 0 0;
   color: aliceblue;
   font-size: 12px;
+  background: rgba(41, 89, 109, 0.01);
 }
-.msg span {
+.msg a {
   color: #030303;
+  background: rgba(41, 89, 109,0);
   text-decoration: none;
 }

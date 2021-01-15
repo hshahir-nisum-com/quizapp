@@ -1,5 +1,13 @@
-.wrapper{
-    display: block;
-    margin: 200px auto;
-    width:fit-content;
+.wrapper {
+  display: block;
+  margin: 200px auto;
+  width: fit-content;
+  display: block;
+  text-decoration: none;
+  border: 3px solid #919C04;
+  color: #919C04;
+  width: 50vw;
+  padding: 10px;
+  box-shadow: 5px 10px #888888;
+  margin-bottom: 20px;
 }
