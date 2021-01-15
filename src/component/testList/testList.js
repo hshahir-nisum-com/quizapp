@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./testList.css";
 import data from "./subject.json";
 import { useHistory } from "react-router-dom";
